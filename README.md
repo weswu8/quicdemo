@@ -9,7 +9,7 @@ Google cloud CDN support QUIC protocol , Here is the android app demo.
 ## Project Goals
 * Demonstrates how to enable QUIC and Http2 on the Android platform.
 ## Screenshot
-![image](https://github.com/weswu8/quicdemo/docs/quicdemo.gif)
+![image](https://github.com/weswu8/quicdemo/blob/master/docs/quicdemo.gif)
 
 ## How to use
 
@@ -20,34 +20,25 @@ Google cloud CDN support QUIC protocol , Here is the android app demo.
 
 
 ## Some Tips
-### 1.Enable Quic
-	
-### 2.Install blobfs-win
-#### 2.1 Download the blobfs-win released version.
-#### 2.2 Edit configuration file: 
-	Open conf/config.xml
-	change the setting of :
-		<ProjectId>gcp_project_id</ProjectId>
-		<!--  Gcp service account json file --> 
-		<ServiceAccountFile>gcp_service_account.json</ServiceAccountFile>
-		<!--  the prefix of target buckets or objects, use / will mount all buckets --> 
-		<RootPrefix>/bucket_name/</RootPrefix>
-		<!--  the dirve letter of local host --> 
-		<MountDrive>F:</MountDrive>
-		<!--  cached object TTL in seconds --> 
-		<CacheTTL>180</CacheTTL>
-
-### final.Start the blobfs service
-    lanuch gcsfuse-win.exe
-	
-It is highly recommended that you should config it as a windows services.
+### 1.Enable Quic Or Https Or Both
+	  CronetEngine.Builder myBuilder = new CronetEngine.Builder(context);
+      cronetEngine = myBuilder
+      		//disable cache for test, normally you should not do this
+            .enableHttpCache(CronetEngine.Builder.HTTP_CACHE_DISABLED, 100 * 1024)
+            .addQuicHint("cdn.obwiz.com", 443, 443)
+            .enableQuic(true)
+            //.enableHttp2(true)
+            .setUserAgent(from(context))
+            .build();
+            
+### 2.Customize user Agent 
+	 new CronetEngine.Builder(context).setUserAgent(from(context))
 
 ## Related Reference
 * [Employing QUIC Protocol to Optimize Uber’s App Performance](https://eng.uber.com/employing-quic-protocol/)
 
 ## Dependency
 * com.google.android.gms:play-services-cronet
-
 
 ## License
 	Copyright (C) 2020 Wesley Wu jie1975.wu@gmail.com
