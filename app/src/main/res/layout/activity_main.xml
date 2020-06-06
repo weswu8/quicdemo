@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:gravity="center_horizontal|top">
+            <Button
+                    android:id="@+id/images_button"
+                    style="@style/CronetSample.TextAppearance.Title"
+                    android:onClick="onClickLoadImages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_double"
+                    android:background="#ffbae4b6"
+                    android:text="@string/load_images"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:baselineAligned="false">
+            <com.weswu.cloudcdn.GridView2
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/quic_gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:columnWidth="95dp"
+                    android:numColumns="3"
+                    android:verticalSpacing="2dp"
+                    android:horizontalSpacing="2dp"
+                    android:stretchMode="columnWidth"
+                    android:gravity="center" />
+            <TextView
+                    android:id="@+id/quic_time_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    style="@style/CronetSample.TextAppearance.Title.Inverse"
+                    android:padding="@dimen/spacing_normal"
+                    android:background="#32a852" />
+
+            <com.weswu.cloudcdn.GridView2
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/https_gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:columnWidth="95dp"
+                    android:numColumns="3"
+                    android:verticalSpacing="2dp"
+                    android:horizontalSpacing="2dp"
+                    android:stretchMode="columnWidth"
+                    android:gravity="center" />
+            <TextView
+                    android:id="@+id/https_time_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    style="@style/CronetSample.TextAppearance.Title.Inverse"
+                    android:padding="@dimen/spacing_normal"
+                    android:background="#32a852" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
